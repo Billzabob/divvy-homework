@@ -27,8 +27,12 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
   end
 
   object :paginated_transaction do
-    field(:items, list_of(:transaction))
-    field(:total_rows, :integer)
+    field(:items, list_of(:transaction)) do
+      resolve(&TransactionsResolver.transactions/3)
+    end
+    field(:total_rows, :integer) do
+      resolve(&TransactionsResolver.transaction_count/3)
+    end
   end
 
   object :transaction_mutations do

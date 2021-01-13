@@ -7,9 +7,14 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   Get a list of transcations
   """
   def transactions(_root, args, _info) do
-    {:ok, %{items: Transactions.list_transactions(args), total_rows: Transactions.count_transactions}}
+    {:ok, Transactions.list_transactions(args)}
   end
 
+  def transaction_count(_root, _args, _info) do
+    {:ok, Transactions.count_transactions}
+  end
+
+  @spec user(any, any, %{source: %{user_id: any}}) :: {:ok, any}
   @doc """
   Get the user associated with a transaction
   """

@@ -16,8 +16,12 @@ defmodule HomeworkWeb.Schemas.UsersSchema do
   end
 
   object :paginated_user do
-    field(:items, list_of(:user))
-    field(:total_rows, :integer)
+    field(:items, list_of(:user)) do
+      resolve(&UsersResolver.users/3)
+    end
+    field(:total_rows, :integer) do
+      resolve(&UsersResolver.user_count/3)
+    end
   end
 
   object :user_mutations do
