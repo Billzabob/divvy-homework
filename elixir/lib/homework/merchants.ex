@@ -17,8 +17,8 @@ defmodule Homework.Merchants do
       [%Merchant{}, ...]
 
   """
-  def list_merchants(_args) do
-    Repo.all(Merchant)
+  def list_merchants(%{skip: skip, limit: limit}) do
+    Repo.all(from u in Merchant, limit: ^limit, offset: ^skip, select: u)
   end
 
   @doc """

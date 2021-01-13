@@ -17,8 +17,8 @@ defmodule Homework.Transactions do
       [%Transaction{}, ...]
 
   """
-  def list_transactions(_args) do
-    Repo.all(Transaction)
+  def list_transactions(%{skip: skip, limit: limit}) do
+    Repo.all(from u in Transaction, limit: ^limit, offset: ^skip, select: u)
   end
 
   @doc """

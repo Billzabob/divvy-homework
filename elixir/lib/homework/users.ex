@@ -17,8 +17,8 @@ defmodule Homework.Users do
       [%User{}, ...]
 
   """
-  def list_users(_args) do
-    Repo.all(User)
+  def list_users(%{skip: skip, limit: limit}) do
+    Repo.all(from u in User, limit: ^limit, offset: ^skip, select: u)
   end
 
   @doc """
