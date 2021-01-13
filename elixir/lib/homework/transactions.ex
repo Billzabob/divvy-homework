@@ -18,19 +18,23 @@ defmodule Homework.Transactions do
 
   """
   def list_transactions(%{skip: skip, limit: limit}) do
-    Repo.all(from u in Transaction, limit: ^limit, offset: ^skip, select: u)
+    Repo.all(from t in Transaction, limit: ^limit, offset: ^skip, select: t)
   end
 
   def list_transactions(%{limit: limit}) do
-    Repo.all(from u in Transaction, limit: ^limit, select: u)
+    Repo.all(from t in Transaction, limit: ^limit, select: t)
   end
 
   def list_transactions(%{skip: skip}) do
-    Repo.all(from u in Transaction, offset: ^skip, select: u)
+    Repo.all(from t in Transaction, offset: ^skip, select: t)
   end
 
   def list_transactions(%{}) do
     Repo.all(Transaction)
+  end
+
+  def count_transactions do
+    Repo.one(from t in Transaction, select: count(t.id))
   end
 
   @doc """

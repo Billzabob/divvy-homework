@@ -5,7 +5,7 @@ defmodule HomeworkWeb.Resolvers.MerchantsResolver do
   Get a list of merchants
   """
   def merchants(_root, args, _info) do
-    {:ok, Merchants.list_merchants(args)}
+    {:ok, %{items: Merchants.list_merchants(args), total_rows: Merchants.count_merchants}}
   end
 
   @doc """

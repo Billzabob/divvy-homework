@@ -7,7 +7,7 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   Get a list of transcations
   """
   def transactions(_root, args, _info) do
-    {:ok, Transactions.list_transactions(args)}
+    {:ok, %{items: Transactions.list_transactions(args), total_rows: Transactions.count_transactions}}
   end
 
   @doc """

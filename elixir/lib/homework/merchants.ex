@@ -18,19 +18,23 @@ defmodule Homework.Merchants do
 
   """
   def list_merchants(%{skip: skip, limit: limit}) do
-    Repo.all(from u in Merchant, limit: ^limit, offset: ^skip, select: u)
+    Repo.all(from m in Merchant, limit: ^limit, offset: ^skip, select: m)
   end
 
   def list_merchants(%{limit: limit}) do
-    Repo.all(from u in Merchant, limit: ^limit, select: u)
+    Repo.all(from m in Merchant, limit: ^limit, select: m)
   end
 
   def list_merchants(%{skip: skip}) do
-    Repo.all(from u in Merchant, offset: ^skip, select: u)
+    Repo.all(from m in Merchant, offset: ^skip, select: m)
   end
 
   def list_merchants(%{}) do
     Repo.all(Merchant)
+  end
+
+  def count_merchants do
+    Repo.one(from m in Merchant, select: count(m.id))
   end
 
 

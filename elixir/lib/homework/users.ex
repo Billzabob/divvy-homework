@@ -33,6 +33,10 @@ defmodule Homework.Users do
     Repo.all(User)
   end
 
+  def count_users do
+    Repo.one(from u in User, select: count(u.id))
+  end
+
   @doc """
   Gets a single user.
 
