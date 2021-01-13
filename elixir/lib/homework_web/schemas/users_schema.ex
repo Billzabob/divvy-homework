@@ -19,6 +19,7 @@ defmodule HomeworkWeb.Schemas.UsersSchema do
     field(:items, list_of(:user)) do
       resolve(&UsersResolver.users/3)
     end
+
     field(:total_rows, :integer) do
       resolve(&UsersResolver.user_count/3)
     end

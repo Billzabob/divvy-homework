@@ -6,7 +6,7 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
 
   alias HomeworkWeb.Resolvers.TransactionsResolver
 
-  import_types HomeworkWeb.Scalars.Decimal
+  import_types(HomeworkWeb.Scalars.Decimal)
 
   object :transaction do
     field(:id, non_null(:id))
@@ -32,6 +32,7 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
     field(:items, list_of(:transaction)) do
       resolve(&TransactionsResolver.transactions/3)
     end
+
     field(:total_rows, :integer) do
       resolve(&TransactionsResolver.transaction_count/3)
     end

@@ -9,22 +9,22 @@ defmodule HomeworkWeb.Schema do
   query do
     @desc "Get all Transactions"
     field(:transactions, :paginated_transaction) do
-      arg :limit, :integer
-      arg :skip, :integer
+      arg(:limit, :integer)
+      arg(:skip, :integer)
       resolve(fn _, _ -> {:ok, %{}} end)
     end
 
     @desc "Get all Users"
     field(:users, :paginated_user) do
-      arg :limit, :integer
-      arg :skip, :integer
+      arg(:limit, :integer)
+      arg(:skip, :integer)
       resolve(fn _, _ -> {:ok, %{}} end)
     end
 
     @desc "Get all Merchants"
     field(:merchants, :paginated_merchant) do
-      arg :limit, :integer
-      arg :skip, :integer
+      arg(:limit, :integer)
+      arg(:skip, :integer)
       resolve(fn _, _ -> {:ok, %{}} end)
     end
   end

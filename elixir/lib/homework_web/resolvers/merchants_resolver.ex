@@ -9,7 +9,7 @@ defmodule HomeworkWeb.Resolvers.MerchantsResolver do
   end
 
   def merchant_count(_root, _args, _info) do
-    {:ok, Merchants.count_merchants}
+    {:ok, Merchants.count_merchants()}
   end
 
   @doc """

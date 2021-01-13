@@ -18,6 +18,7 @@ defmodule HomeworkWeb.Schemas.MerchantsSchema do
     field(:items, list_of(:merchant)) do
       resolve(&MerchantsResolver.merchants/3)
     end
+
     field(:total_rows, :integer) do
       resolve(&MerchantsResolver.merchant_count/3)
     end

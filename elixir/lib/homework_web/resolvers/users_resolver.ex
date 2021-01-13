@@ -9,7 +9,7 @@ defmodule HomeworkWeb.Resolvers.UsersResolver do
   end
 
   def user_count(_root, _args, _info) do
-    {:ok, Users.count_users}
+    {:ok, Users.count_users()}
   end
 
   @doc """

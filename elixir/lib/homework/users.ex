@@ -18,15 +18,15 @@ defmodule Homework.Users do
 
   """
   def list_users(%{skip: skip, limit: limit}) do
-    Repo.all(from u in User, limit: ^limit, offset: ^skip, select: u)
+    Repo.all(from(u in User, limit: ^limit, offset: ^skip, select: u))
   end
 
   def list_users(%{limit: limit}) do
-    Repo.all(from u in User, limit: ^limit, select: u)
+    Repo.all(from(u in User, limit: ^limit, select: u))
   end
 
   def list_users(%{skip: skip}) do
-    Repo.all(from u in User, offset: ^skip, select: u)
+    Repo.all(from(u in User, offset: ^skip, select: u))
   end
 
   def list_users(%{}) do
@@ -34,7 +34,7 @@ defmodule Homework.Users do
   end
 
   def count_users do
-    Repo.one(from u in User, select: count(u.id))
+    Repo.one(from(u in User, select: count(u.id)))
   end
 
   @doc """

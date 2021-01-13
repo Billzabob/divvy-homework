@@ -11,7 +11,7 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   end
 
   def transaction_count(_root, _args, _info) do
-    {:ok, Transactions.count_transactions}
+    {:ok, Transactions.count_transactions()}
   end
 
   @spec user(any, any, %{source: %{user_id: any}}) :: {:ok, any}
