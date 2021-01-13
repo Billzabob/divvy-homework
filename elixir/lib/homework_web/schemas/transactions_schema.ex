@@ -6,10 +6,12 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
 
   alias HomeworkWeb.Resolvers.TransactionsResolver
 
+  import_types HomeworkWeb.Scalars.Decimal
+
   object :transaction do
     field(:id, non_null(:id))
     field(:user_id, :id)
-    field(:amount, :integer)
+    field(:amount, :decimal_amount)
     field(:credit, :boolean)
     field(:debit, :boolean)
     field(:description, :string)
@@ -40,8 +42,7 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
     field :create_transaction, :transaction do
       arg(:user_id, non_null(:id))
       arg(:merchant_id, non_null(:id))
-      @desc "amount is in cents"
-      arg(:amount, non_null(:integer))
+      arg(:amount, non_null(:decimal_amount))
       arg(:credit, non_null(:boolean))
       arg(:debit, non_null(:boolean))
       arg(:description, non_null(:string))
@@ -54,8 +55,7 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
       arg(:id, non_null(:id))
       arg(:user_id, non_null(:id))
       arg(:merchant_id, non_null(:id))
-      @desc "amount is in cents"
-      arg(:amount, non_null(:integer))
+      arg(:amount, non_null(:decimal_amount))
       arg(:credit, non_null(:boolean))
       arg(:debit, non_null(:boolean))
       arg(:description, non_null(:string))
