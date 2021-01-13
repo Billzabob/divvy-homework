@@ -21,6 +21,19 @@ defmodule Homework.Merchants do
     Repo.all(from u in Merchant, limit: ^limit, offset: ^skip, select: u)
   end
 
+  def list_merchants(%{limit: limit}) do
+    Repo.all(from u in Merchant, limit: ^limit, select: u)
+  end
+
+  def list_merchants(%{skip: skip}) do
+    Repo.all(from u in Merchant, offset: ^skip, select: u)
+  end
+
+  def list_merchants(%{}) do
+    Repo.all(Merchant)
+  end
+
+
   @doc """
   Gets a single merchant.
 

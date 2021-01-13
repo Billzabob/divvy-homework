@@ -21,6 +21,18 @@ defmodule Homework.Transactions do
     Repo.all(from u in Transaction, limit: ^limit, offset: ^skip, select: u)
   end
 
+  def list_transactions(%{limit: limit}) do
+    Repo.all(from u in Transaction, limit: ^limit, select: u)
+  end
+
+  def list_transactions(%{skip: skip}) do
+    Repo.all(from u in Transaction, offset: ^skip, select: u)
+  end
+
+  def list_transactions(%{}) do
+    Repo.all(Transaction)
+  end
+
   @doc """
   Gets a single transaction.
 

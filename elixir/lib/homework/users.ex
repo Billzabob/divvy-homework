@@ -21,6 +21,18 @@ defmodule Homework.Users do
     Repo.all(from u in User, limit: ^limit, offset: ^skip, select: u)
   end
 
+  def list_users(%{limit: limit}) do
+    Repo.all(from u in User, limit: ^limit, select: u)
+  end
+
+  def list_users(%{skip: skip}) do
+    Repo.all(from u in User, offset: ^skip, select: u)
+  end
+
+  def list_users(%{}) do
+    Repo.all(User)
+  end
+
   @doc """
   Gets a single user.
 
