@@ -1,4 +1,5 @@
 defmodule HomeworkWeb.Resolvers.UsersResolver do
+  alias Homework.Companies
   alias Homework.Users
 
   @doc """
@@ -12,6 +13,19 @@ defmodule HomeworkWeb.Resolvers.UsersResolver do
     {:ok, Users.count_users()}
   end
 
+  @spec company(any, any, %{source: %{company_id: any}}) :: {:ok, any}
+  @doc """
+  Get the company associated with a user
+  """
+  def company(_root, _args, %{source: %{company_id: company_id}}) do
+    {:ok, Companies.get_company!(company_id)}
+  end
+
+  @spec create_user(
+          any,
+          :invalid | %{optional(:__struct__) => none, optional(atom | binary) => any},
+          any
+        ) :: {:error, <<_::64, _::_*8>>} | {:ok, any}
   @doc """
   Creates a user
   """

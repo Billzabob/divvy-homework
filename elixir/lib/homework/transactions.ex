@@ -37,6 +37,10 @@ defmodule Homework.Transactions do
     Repo.one(from(t in Transaction, select: count(t.id)))
   end
 
+  def byCompany(companyId) do
+    Repo.all(from(t in Transaction, where: t.company_id == ^companyId, select: t))
+  end
+
   @doc """
   Gets a single transaction.
 

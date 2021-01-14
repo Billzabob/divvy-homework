@@ -27,6 +27,13 @@ defmodule HomeworkWeb.Schema do
       arg(:skip, :integer)
       resolve(fn _, _ -> {:ok, %{}} end)
     end
+
+    @desc "Get all Companies"
+    field(:companies, :paginated_company) do
+      arg(:limit, :integer)
+      arg(:skip, :integer)
+      resolve(fn _, _ -> {:ok, %{}} end)
+    end
   end
 
   mutation do

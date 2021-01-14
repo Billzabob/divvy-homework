@@ -10,7 +10,7 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
 
   object :transaction do
     field(:id, non_null(:id))
-    field(:user_id, :id)
+    field(:company_id, :id)
     field(:amount, :decimal_amount)
     field(:credit, :boolean)
     field(:debit, :boolean)
@@ -19,8 +19,8 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
     field(:inserted_at, :naive_datetime)
     field(:updated_at, :naive_datetime)
 
-    field(:user, :user) do
-      resolve(&TransactionsResolver.user/3)
+    field(:company, :company) do
+      resolve(&TransactionsResolver.company/3)
     end
 
     field(:merchant, :merchant) do
