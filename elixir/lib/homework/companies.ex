@@ -98,9 +98,4 @@ defmodule Homework.Companies do
   def delete_company(%Company{} = company) do
     Repo.delete(company)
   end
-
-  def available_credit(%Company{} = company) do
-    # company.credit_line -
-    {:ok, 0}
-  end
 end

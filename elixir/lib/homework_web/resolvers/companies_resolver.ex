@@ -59,6 +59,8 @@ defmodule HomeworkWeb.Resolvers.CompaniesResolver do
   def available_credit(%{id: id}, _args, _info) do
     company = Companies.get_company!(id)
 
-    {:ok, company.credit_line - Enum.reduce(Transactions.byCompany(company.id), 0, fn e, a -> a + e.amount end)}
+    {:ok,
+     company.credit_line -
+       Enum.reduce(Transactions.byCompany(company.id), 0, fn t, acc -> acc + t.amount end)}
   end
 end
