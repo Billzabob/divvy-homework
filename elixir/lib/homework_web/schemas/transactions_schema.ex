@@ -30,6 +30,8 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
 
   object :paginated_transaction do
     field(:items, list_of(:transaction)) do
+      arg(:limit, :integer)
+      arg(:skip, :integer)
       resolve(&TransactionsResolver.transactions/3)
     end
 

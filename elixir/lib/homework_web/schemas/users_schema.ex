@@ -22,6 +22,8 @@ defmodule HomeworkWeb.Schemas.UsersSchema do
 
   object :paginated_user do
     field(:items, list_of(:user)) do
+      arg(:limit, :integer)
+      arg(:skip, :integer)
       resolve(&UsersResolver.users/3)
     end
 

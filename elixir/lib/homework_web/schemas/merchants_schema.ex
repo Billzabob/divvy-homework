@@ -16,6 +16,8 @@ defmodule HomeworkWeb.Schemas.MerchantsSchema do
 
   object :paginated_merchant do
     field(:items, list_of(:merchant)) do
+      arg(:limit, :integer)
+      arg(:skip, :integer)
       resolve(&MerchantsResolver.merchants/3)
     end
 

@@ -20,6 +20,8 @@ defmodule HomeworkWeb.Schemas.CompaniesSchema do
 
   object :paginated_company do
     field(:items, list_of(:company)) do
+      arg(:limit, :integer)
+      arg(:skip, :integer)
       resolve(&CompaniesResolver.companies/3)
     end
 
